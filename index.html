@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Radio Station</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 20px;
+            font-size: 18px;
+            color: white;
+            background: #ff4500;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #e63e00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Radio Station</h1>
+        <p>Click the button below to listen live!</p>
+        <a href="yourstream.pls" class="btn">Listen Now</a>
+        
+        <div>
+            <p>Adjust Volume:</p>
+            <button onclick="adjustVolume(-0.1)" class="btn">-</button>
+            <button onclick="adjustVolume(0.1)" class="btn">+</button>
+        </div>
+        
+        <audio id="radioPlayer" src="listen.pls" controls style="display:none;"></audio>
+        
+        <script>
+            const player = document.getElementById('radioPlayer');
+            function adjustVolume(change) {
+                player.volume = Math.min(1, Math.max(0, player.volume + change));
+            }
+        </script>
+    </div>
+</body>
+</html>
