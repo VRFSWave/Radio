@@ -42,7 +42,7 @@
     <div class="container">
         <h1>Welcome to My Radio Station</h1>
         <p>Click the button below to listen live!</p>
-        <a href="listen.pls" class="btn">Listen Now</a>
+        <button onclick="playRadio()" class="btn">Listen Now</button>
         
         <div>
             <p>Adjust Volume:</p>
@@ -50,10 +50,16 @@
             <button onclick="adjustVolume(0.1)" class="btn">+</button>
         </div>
         
-        <audio id="radioPlayer" src="listen.pls" controls style="display:none;"></audio>
+        <audio id="radioPlayer" controls>
+            <source src="listen.pls" type="audio/x-scpls">
+            Your browser does not support the audio element.
+        </audio>
         
         <script>
             const player = document.getElementById('radioPlayer');
+            function playRadio() {
+                player.play();
+            }
             function adjustVolume(change) {
                 player.volume = Math.min(1, Math.max(0, player.volume + change));
             }
